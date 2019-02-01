@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/game-manager.js"></script>
+    <script src="js/character.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/enemy.js"></script>
+</head>
+<body>
+    <div class="header">
+        <p>Play!</p>
+        <h2>Choose your character!</h2>
+    </div>
+    <!-- With JS we can stay within the same index / html page -->
+    <div class="interface">
+        <a href="#" onClick="GameManager.setGameStart('Geralt')">
+            <img src="img/player/geralt.jpg" alt="geralt">
+            <div>
+                <h3>Geralt of Rivia</h3>
+                <p>Warrior type: High strength and health. Moderate agility, spells and speed.</p>
+            </div>
+        </a>
+        <a href="#" onClick="GameManager.setGameStart('Ciri')">
+            <img src="img/player/ciri.jpg" alt="ciri">
+            <div>
+                <h3>Ciri</h3>
+                <p>Balanced mage warrior type: High agility and spells. Moderate health, strength and speed.</p>
+            </div>
+        </a>
+        <a href="#" onClick="GameManager.setGameStart('Dandelion')">
+            <img src="img/player/dandelion.jpg" alt="dandelion">
+            <div>
+                <h3>Dandelion</h3>
+                <p>Fast type: Very high agility and speed. Low health, strength and spells.</p>
+            </div>
+        </a>
+        <a href="#" onClick="GameManager.setGameStart('Keira')">
+            <img src="img/player/keira.jpg" alt="keira">
+            <div>
+                <h3>Keira</h3>
+                <p>Mage type: Very high spells. Moderate agility and speed, low strength and health.</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="actions">
+
+    </div>
+
+    <div class="arena">
+        
+    </div>
+
+    <div class="enemy">
+
+        
+    </div>
+</body>
+</html>
