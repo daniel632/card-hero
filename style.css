@@ -85,9 +85,9 @@ body {
     line-height: 20px;
 }
 
-.btn-prefight {
+/* .btn-prefight {
     width: 100% !important;
-}
+} */
 
 .actions {
     width: 100%;
@@ -96,7 +96,8 @@ body {
 }
 
 .actions a {
-    width: 33.33%;
+    /* width: 33.33%; */
+    width: 100%;
     padding: 10px 0px;
     text-align: center;
     font-size: 14px;
@@ -129,7 +130,7 @@ body {
     background-image: url("img/arena/2.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 80vh;
+    background-size: 95vh;
     visibility: hidden;
 }
 

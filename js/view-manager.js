@@ -33,7 +33,7 @@ let ViewManager = {
         });
 
         // Making the arena div visible
-        this.domArena.style.visiblity = "visible";
+        this.domArena.style.visibility = 'visible';
     },
 
     setFightView: function() {
@@ -51,7 +51,7 @@ let ViewManager = {
         this.createAndAttachChildNode(this.domActions, "a", {
             "text": "Fight!",
             "href": "#",
-            "class": "btn-prefight",
+            "class": "btn-fight",
             "onclick": "GameManager.commenceAttack()"
         });
         
