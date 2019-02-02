@@ -4,7 +4,6 @@ let GameManager = {
 
     startGame: function(classType) {
         this.createPlayer(classType);
-        ViewManager.setPlayerView()
         ViewManager.setPreFightView();
     }, 
 
@@ -52,7 +51,6 @@ let GameManager = {
     },
 
     commenceAttack: function() {
-
         // Determining attack order
         let playerChance = (player.speed + randomNumberBetween(0, 100)) * 0.5;
         let enemyChance = (enemy.speed + randomNumberBetween(0, 100)) * 0.5;
@@ -72,6 +70,14 @@ let GameManager = {
         if (character2.health >= 0) {
             character2.attack(character1);
         }
+    },
+
+    commenceBlock: function() {
+
+    },
+
+    retreat: function() {
+        ViewManager.setPreFightView();
     }
 
 };

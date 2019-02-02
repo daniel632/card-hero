@@ -19,6 +19,7 @@ class Character {
 
     attackValues() {
         let calcBaseDamage;
+        // TODO: improve damage algo
         if (this.spells > 50) {
             calcBaseDamage = this.strength * this.spells / 1000;
         } else {

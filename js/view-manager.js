@@ -17,7 +17,10 @@ let ViewManager = {
 
     setPreFightView: function() {
 
-        this.removeAllChildrenElements(this.domHeader);
+        this.clearPage();
+
+        // Player
+        this.createCharacterView(this.domInterface, player);
 
         // Create Paragraph node and insert text into it
         this.createAndAttachChildNode(this.domHeader, "p", {
@@ -31,9 +34,6 @@ let ViewManager = {
             "class": "btn-prefight",
             "onclick": "GameManager.startFight()"
         });
-
-        // Making the arena div visible
-        this.domArena.style.visibility = 'visible';
     },
 
     setFightView: function() {
@@ -47,13 +47,27 @@ let ViewManager = {
         });
         
         // Button
-        // TODO: change btn name
         this.createAndAttachChildNode(this.domActions, "a", {
-            "text": "Fight!",
+            "text": "Melee Attack!",
             "href": "#",
             "class": "btn-fight",
             "onclick": "GameManager.commenceAttack()"
         });
+        this.createAndAttachChildNode(this.domActions, "a", {
+            "text": "Block!",
+            "href": "#",
+            "class": "btn-block",
+            "onclick": "GameManager.commenceBlock()"
+        });
+        this.createAndAttachChildNode(this.domActions, "a", {
+            "text": "White Flag!",
+            "href": "#",
+            "class": "btn-retreat",
+            "onclick": "GameManager.retreat()"
+        });
+
+        // Making the arena div visible
+        this.domArena.style.visibility = 'visible';
         
         // Creating the enemy view
         ViewManager.createCharacterView(this.domEnemy, enemy);
@@ -122,5 +136,16 @@ let ViewManager = {
 
     removeAllChildrenElements: function(parentElement) {
         parentElement.innerHTML = "";
+    },
+
+    // Remove all elements from the main divs
+    // TODO: make an object for all divs - would allow us to enumerate through all with a loop
+    clearPage: function() {
+        this.removeAllChildrenElements(this.domHeader);
+        this.removeAllChildrenElements(this.domInterface);
+        this.removeAllChildrenElements(this.domActions);
+        this.removeAllChildrenElements(this.domArena);
+        this.domArena.style.visibility = "hidden";
+        this.removeAllChildrenElements(this.domEnemy);
     }
 };
