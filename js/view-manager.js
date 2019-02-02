@@ -1,9 +1,9 @@
-// Controls changes to HTML and CSS
+// Rsponsible for changes to HTML and CSS
 // (Instance, because we only need on variant)
 let ViewManager = {
 
-    // TODO: init once? using a constructor
-    // TODO: dom player
+    // TODO: init once? using a constructor (to avoid rerunning doc functions)
+    // TODO: add a domPlayer?
     domHeader: document.querySelector(".header"),
     domInterface: document.querySelector(".interface"),
     domActions: document.querySelector(".actions"),

@@ -32,8 +32,7 @@ let GameManager = {
         const numberOfEnemies = 3;
         let randomNumber = Math.floor(Math.random() * Math.floor(numberOfEnemies));
 
-        // Create an enemy:
-        // TODO: modularise
+        // Create an enemy
         switch(randomNumber) {
             case 0:
                 enemy = new Enemy("O'Dimm", 80, 90, 40, 40, 60);

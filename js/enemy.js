@@ -5,7 +5,6 @@ class Enemy extends Character {
     constructor(classType, health, spells, strength, agility, speed) {
         super(classType, health, spells, strength, agility, speed);
         this.type = 'enemy';
-        this.healthHTML = document.querySelector(".enemy-health");  // TODO: why is this defined only for enemy??
     }
 
     attack(opponent) {
