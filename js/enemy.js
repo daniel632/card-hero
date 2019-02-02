@@ -4,11 +4,13 @@ class Enemy extends Character {
 
     constructor(classType, health, spells, strength, agility, speed) {
         super(classType, health, spells, strength, agility, speed);
-        this.healthHTML = document.querySelector(".enemy-health");
+        this.type = 'enemy';
+        this.healthHTML = document.querySelector(".enemy-health");  // TODO: why is this defined only for enemy??
     }
 
     attack(opponent) {
         let enemyAttackValues = super.attack(opponent);
+
         alert("Enemy hit you with " + enemyAttackValues.damagePerHit + " damage, " 
         + enemyAttackValues.numberOfHits + " times.");
 

@@ -12,6 +12,7 @@ class Character {
         this.strength = strength;
         this.agility = agility;
         this.speed = speed;
+        this.type;  // 'player' or 'enemy'
     }
 
     // TODO: singleton pattern for player & enemy

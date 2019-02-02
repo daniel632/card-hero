@@ -3,9 +3,15 @@ let player;
 
 class Player extends Character {
 
+    constructor(classType, health, spells, strength, agility, speed) {
+        super(classType, health, spells, strength, agility, speed);
+        this.type = 'player';
+    }
+
     // Attempt an attack. The opponent may land the first strike...
     attack(opponent) {
         let playerAttackValues = super.attack(opponent);
+
         alert("You hit with " + playerAttackValues.damagePerHit + " damage, " 
         + playerAttackValues.numberOfHits + " times.");
 
