@@ -6,7 +6,6 @@ Card assets from the 'The Witcher 3'.
 Initial inspiration from mmtuts youtube JS tutorials. 
 
 # TODOs:
-- Improve attack logic
 - UI (arena, replace alerts, prepare for player state, etc)
 - Other actions
 - Player state & saving

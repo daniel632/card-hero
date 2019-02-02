@@ -47,6 +47,7 @@ let ViewManager = {
         });
         
         // Button
+        // TODO: change btn name
         this.createAndAttachChildNode(this.domActions, "a", {
             "text": "Fight!",
             "href": "#",

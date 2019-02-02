@@ -8,6 +8,12 @@ let GameManager = {
         ViewManager.setPreFightView();
     }, 
 
+    // Create an enemy oppponent, and set the view for a fight
+    startFight: function() {
+        this.createRandomEnemy();
+        ViewManager.setFightView();
+    },
+    
     // Create / Reset player
     createPlayer: function(classType) {
         switch(classType) {
@@ -43,12 +49,6 @@ let GameManager = {
                 enemy = new Enemy("Morkvarg", 60, 15, 80, 80, 50);
                 break;
         }
-    },
-
-    // Create an enemy oppponent, and set the view for a fight
-    startFight: function() {
-        this.createRandomEnemy();
-        ViewManager.setFightView();
     },
 
     commenceAttack: function() {
