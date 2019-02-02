@@ -30,17 +30,16 @@ let GameManager = {
     createRandomEnemy: function() {
         // Returns an integer within {0, ..., numberOfEnemies-1}
         const numberOfEnemies = 3;
-        let randomNumber = Math.floor(Math.random() * Math.floor(numberOfEnemies));
-
+        let randomNumber = randomNumberBetween(1, numberOfEnemies);
         // Create an enemy
         switch(randomNumber) {
-            case 0:
+            case 1:
                 enemy = new Enemy("O'Dimm", 80, 90, 40, 40, 60);
                 break;
-            case 1:
+            case 2:
                 enemy = new Enemy("Eredin", 80, 30, 100, 35, 25);
                 break;
-            case 2:
+            case 3:
                 enemy = new Enemy("Morkvarg", 60, 15, 80, 80, 50);
                 break;
         }
@@ -53,10 +52,14 @@ let GameManager = {
     },
 
     commenceAttack: function() {
+
         // Determining attack order
-        // TODO: add more complexity and randomness
+        let playerChance = (player.speed + randomNumberBetween(0, 100)) * 0.5;
+        let enemyChance = (enemy.speed + randomNumberBetween(0, 100)) * 0.5;
+        console.log("player-chance: " + playerChance + " - enemy-chance: " + enemyChance);
+
         let character1, character2;
-        if (player.speed >= enemy.speed) {
+        if (playerChance >= enemyChance) {
             character1 = player;
             character2 = enemy;
         } else {
@@ -70,4 +73,5 @@ let GameManager = {
             character2.attack(character1);
         }
     }
+
 };
