@@ -19,7 +19,8 @@ class Player extends Character {
 
         // Checking if enemy is alive or not
         if (opponent.health <= 0) {
-            alert("You win! Refresh the browser to play again.");
+            alert("You win! Returning home.");
+            // TODO: try using an event here?
             opponentHealthHTML.innerHTML = 'Health: 0';
         } else {
             opponentHealthHTML.innerHTML = 'Health: ' + opponent.health;

@@ -17,7 +17,7 @@ class Enemy extends Character {
 
         // Checking if player is alive or not
         if (opponent.health <= 0) {
-            alert("You lose! Refresh the browser to play again.");
+            alert("You lose! Refresh the portal to play again.");
             opponentHealthHTML.innerHTML = 'Health: 0';
         } else {
             opponentHealthHTML.innerHTML = 'Health: ' + opponent.health;

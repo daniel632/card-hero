@@ -148,4 +148,6 @@ let ViewManager = {
         this.domArena.style.visibility = "hidden";
         this.removeAllChildrenElements(this.domEnemy);
     }
+
+    // TODO: listeners on player and enemey healthHTML - 
 };
