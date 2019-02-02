@@ -14,5 +14,6 @@ Initial inspiration from mmtuts youtube JS tutorials.
 - Audio?
 
 # CODE TODOs:
-- Look for alternate way to inject HTML, perhaps using create and append methods
 - (Architecture) Decouple ui changes from logic / data manipulation (e.g. presenter -> controller -> data-layer, MVC, etc)
+- Character singleton?
+- Config file (for CSS names, etc)?
