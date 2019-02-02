@@ -2,9 +2,10 @@
 
 let GameManager = {
 
-    setGameStart: function(classType) {
+    startGame: function(classType) {
         this.createPlayer(classType);
-        this.setPreFight();
+        ViewManager.setPlayerView()
+        ViewManager.setPreFightView();
     }, 
 
     // Create / Reset player
@@ -23,29 +24,10 @@ let GameManager = {
                 player = new Player(classType, 40, 100, 35, 50, 50);
                 break;
         }
-
-        let getInterface = document.querySelector(".interface");
-        getInterface.innerHTML = this.createCharacterHTML('player', player);
-    }, 
-
-    setPreFight: function() {
-        let getHeader = document.querySelector(".header");
-        let getActions = document.querySelector(".actions");
-        let getArena = document.querySelector(".arena");
-        
-        getHeader.innerHTML = '<p>Task: Find an enemy!</p>';
-        getActions.innerHTML = '<a href="#" class="btn-prefight"'
-        + ' onclick="GameManager.setFight()">Search for an enemy!</a>';
-
-        // Note: Setting is done via assignment (instead of setter functions?)
-        getArena.style.visiblity = "visible";
     },
 
-    setFight: function() {
-        let getHeader = document.querySelector(".header");
-        let getActions = document.querySelector(".actions");
-        let getEnemy = document.querySelector(".enemy");
-        
+    // Create an enemy opponent randomly, and then assigns it to the 'enemy' global variable
+    createRandomEnemy: function() {
         // Returns an integer within {0, ..., numberOfEnemies-1}
         const numberOfEnemies = 3;
         let randomNumber = Math.floor(Math.random() * Math.floor(numberOfEnemies));
@@ -63,37 +45,30 @@ let GameManager = {
                 enemy = new Enemy("Morkvarg", 60, 15, 80, 80, 50);
                 break;
         }
-
-        getHeader.innerHTML = '<p>Task: Choose your move</p>';
-        getActions.innerHTML = '<a href="#" class="btn-prefight"'
-        + ' onclick="GameManager.startFight()">Fight!</a>';
-        getEnemy.innerHTML = this.createCharacterHTML('enemy', enemy);
     },
 
-    createCharacterHTML: function(characterType, character) {
-        str = '<img src="img/' + characterType + '/' + character.classType.toLowerCase() 
-        + '.jpg" class="img-avatar"><div><h3>' + character.classType + '</h3>'
-        + '<p class="' + characterType + '-health">Health: ' + character.health + '</p><p>Spells: ' + character.spells + '</p>'
-        + '<p>Strength: ' + character.strength + '</p><p>Agility: ' + character.agility + '</p>'
-        + '<p>Speed: ' + character.speed + '</p></div>';
-        return str;
-    },
-
+    // Create an enemy oppponent, and set the view for a fight
     startFight: function() {
-        let getPlayerHealthHTML = document.querySelector(".player-health");
-        let getEnemyHealthHTML = document.querySelector(".enemy-health");
+        this.createRandomEnemy();
+        ViewManager.setFightView();
+    },
 
-        // Attack order - TODO: change (add more complexity and randomness)
-        if(player.speed >= enemy.speed) {
-            player.attack(enemy, getEnemyHealthHTML);
-            
-            if (enemy.health > 0) {
-                enemy.attack(player, getPlayerHealthHTML);
-            }
+    commenceAttack: function() {
+        // Determining attack order
+        // TODO: add more complexity and randomness
+        let character1, character2;
+        if (player.speed >= enemy.speed) {
+            character1 = player;
+            character2 = enemy;
+        } else {
+            character1 = enemy;
+            character2 = player;
         }
-        else {
-            // TODO: if enemy is faster than player
-            alert("WIP - Enemy is faster, please refresh for now");
+
+        character1.attack(character2);
+
+        if (character2.health >= 0) {
+            character2.attack(character1);
         }
     }
 };

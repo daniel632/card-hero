@@ -14,6 +14,8 @@ class Character {
         this.speed = speed;
     }
 
+    // TODO: singleton pattern for player & enemy
+
     attackValues() {
         let calcBaseDamage;
         if (this.spells > 50) {

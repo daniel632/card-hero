@@ -1,10 +1,18 @@
 let enemy;
 
 class Enemy extends Character {
-    attack(opponent, opponentHealthHTML) {
+
+    constructor(classType, health, spells, strength, agility, speed) {
+        super(classType, health, spells, strength, agility, speed);
+        this.healthHTML = document.querySelector(".enemy-health");
+    }
+
+    attack(opponent) {
         let enemyAttackValues = super.attack(opponent);
         alert("Enemy hit you with " + enemyAttackValues.damagePerHit + " damage, " 
         + enemyAttackValues.numberOfHits + " times.");
+
+        let opponentHealthHTML = document.querySelector(".player-health");
 
         // Checking if player is alive or not
         if (opponent.health <= 0) {

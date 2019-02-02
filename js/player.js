@@ -4,10 +4,12 @@ let player;
 class Player extends Character {
 
     // Attempt an attack. The opponent may land the first strike...
-    attack(opponent, opponentHealthHTML) {
+    attack(opponent) {
         let playerAttackValues = super.attack(opponent);
         alert("You hit with " + playerAttackValues.damagePerHit + " damage, " 
         + playerAttackValues.numberOfHits + " times.");
+
+        let opponentHealthHTML = document.querySelector(".enemy-health");
 
         // Checking if enemy is alive or not
         if (opponent.health <= 0) {
