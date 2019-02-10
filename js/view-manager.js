@@ -3,16 +3,16 @@
 let ViewManager = {
 
     // TODO: init once? using a constructor (to avoid rerunning doc functions)
-    // TODO: add a domPlayer?
     domHeader: document.querySelector(".header"),
     domInterface: document.querySelector(".interface"),
+    domPlayer: document.querySelector(".player"),
     domActions: document.querySelector(".actions"),
     domArena: document.querySelector(".arena"),
     domEnemy: document.querySelector(".enemy"),
 
 
     setPlayerView: function() {
-        this.createCharacterView(this.domInterface, player);
+        this.createCharacterView(this.domPlayer, player);
     },
 
     setPreFightView: function() {
@@ -20,7 +20,7 @@ let ViewManager = {
         this.clearPage();
 
         // Player
-        this.createCharacterView(this.domInterface, player);
+        this.createCharacterView(this.domPlayer, player);
 
         // Create Paragraph node and insert text into it
         this.createAndAttachChildNode(this.domHeader, "p", {
@@ -108,28 +108,29 @@ let ViewManager = {
         this.createAndAttachChildNode(parentNode, "div", undefined);
         let divNode = parentNode.querySelector("div");
         this.createAndAttachChildNode(divNode, "h3", {
+            "class": "character-name",
             "text": character.classType
         });
 
         // TODO: Make a character stats class. would allow a for loop to be used here
         this.createAndAttachChildNode(divNode, "p", {
-            "class": character.type + "-health",
+            "class": character.type + "-health" + " character-text",
             "text": "Health: "+ character.health
         });
         this.createAndAttachChildNode(divNode, "p", {
-            "class": character.type + "-spells",
+            "class": character.type + "-spells" + " character-text",
             "text": "Spells: "+ character.spells
         });
         this.createAndAttachChildNode(divNode, "p", {
-            "class": character.type + "-strength",
+            "class": character.type + "-strength" + " character-text",
             "text": "Strength: "+ character.strength
         });
         this.createAndAttachChildNode(divNode, "p", {
-            "class": character.type + "-agility",
+            "class": character.type + "-agility" + " character-text",
             "text": "Agility: "+ character.agility
         });
         this.createAndAttachChildNode(divNode, "p", {
-            "class": character.type + "-speed",
+            "class": character.type + "-speed" + " character-text",
             "text": "Speed: "+ character.speed
         });
     },
@@ -143,6 +144,7 @@ let ViewManager = {
     clearPage: function() {
         this.removeAllChildrenElements(this.domHeader);
         this.removeAllChildrenElements(this.domInterface);
+        this.removeAllChildrenElements(this.domPlayer);
         this.removeAllChildrenElements(this.domActions);
         this.removeAllChildrenElements(this.domArena);
         this.domArena.style.visibility = "hidden";
