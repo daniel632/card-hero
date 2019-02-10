@@ -50,7 +50,7 @@ body {
     background-color: #1b1b1b;
 }
 
-.player, .enemy div {
+.player div, .enemy div {
     width: 220px;
     padding: 0 10px 0 20px;
     background-color: #211510;
@@ -119,20 +119,6 @@ body {
 
 /*** PLAYER ***/
 
-.player {
-    padding: 0;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #1b1b1b;
-}
-
-.player div {
-    width: 220px;
-    padding: 0 10px 0 20px;
-    background-color: #211510;
-}
 
 
 /*** ACTIONS ***/
