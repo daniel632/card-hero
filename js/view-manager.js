@@ -4,6 +4,7 @@ let ViewManager = {
 
     // TODO: init once? using a constructor (to avoid rerunning doc functions)
     domHeader: document.querySelector(".header"),
+    domInfo: document.querySelector(".info"),
     domInterface: document.querySelector(".interface"),
     domPlayer: document.querySelector(".player"),
     domActions: document.querySelector(".actions"),
@@ -143,13 +144,33 @@ let ViewManager = {
     // TODO: make an object for all divs - would allow us to enumerate through all with a loop
     clearPage: function() {
         this.removeAllChildrenElements(this.domHeader);
+        this.removeAllChildrenElements(this.domInfo);
         this.removeAllChildrenElements(this.domInterface);
         this.removeAllChildrenElements(this.domPlayer);
         this.removeAllChildrenElements(this.domActions);
         this.removeAllChildrenElements(this.domArena);
         this.domArena.style.visibility = "hidden";
         this.removeAllChildrenElements(this.domEnemy);
-    }
+    },
 
     // TODO: listeners on player and enemey healthHTML - 
+
+    // Opens the help panel
+    loadInfo: function() {
+        this.domInfo.querySelector("div").querySelector("button").innerHTML = "Hide Info";
+        this.domInfo.querySelector("div").querySelector("button").setAttribute("onclick", "ViewManager.hideInfo()");
+
+        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+            "class": "text",
+            "text": "Health: Allows you to absorb damage from your opponent. Speed: Increases your chances of attacking first."
+        });
+    },
+    
+    hideInfo: function() {
+        this.domInfo.querySelector("div").querySelector("p").remove();
+
+        this.domInfo.querySelector("div").querySelector("button").innerHTML = "More Info!";
+        this.domInfo.querySelector("div").querySelector("button").setAttribute("onclick", "ViewManager.loadInfo()");
+    }
+
 };
