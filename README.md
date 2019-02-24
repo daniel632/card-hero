@@ -8,18 +8,16 @@ Initial inspiration from mmtuts youtube JS tutorials.
 # TODOs:
 - UI (arena, replace alerts, prepare for player state, etc)
 
-- Go button, which confirms and calculates the result of your (chosen) and the opponents (randomly chosen) actions, and then displays it
-- Other attacks (Melee Attack (Strength), Cast Spell (spells), Stun (speed, agility), Block (agility, str)). Several combinations:
-    - BLOCK & ATTACK -> blocker receives no dmg, attacker receives some dmg
-    - STUN: success -> opponent fails to do anything, fail -> opponent acts 
-    - GET RID OF ACTION ORDER!
+- When action btn is toggled, its opacity changes until another another one is toggled
+
 - Player depletion & recharge of agility
 - Special Ability: Can only be used once per round
-- Rounds?
 
 - Player state & saving
-- RPG player leveling
+- RPG player leveling (e.g. XP)
 - Audio?
+
+- Better blocking logic
 
 # CODE TODOs:
 - (Architecture) Decouple ui changes from logic / data manipulation (e.g. presenter -> controller -> data-layer, MVC, etc)

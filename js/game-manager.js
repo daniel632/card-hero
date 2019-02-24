@@ -50,15 +50,10 @@ let GameManager = {
         }
     },
 
-    go: function() {
-
-    },
-
-    commenceAttack: function() {
-        // Determining attack order
+    calculateActOrder: function() {
         let playerChance = (player.speed + randomNumberBetween(0, 100)) * 0.5;
         let enemyChance = (enemy.speed + randomNumberBetween(0, 100)) * 0.5;
-        console.log("player-chance: " + playerChance + " - enemy-chance: " + enemyChance);
+        // console.log("player-chance: " + playerChance + " - enemy-chance: " + enemyChance);
 
         let character1, character2;
         if (playerChance >= enemyChance) {
@@ -69,23 +64,48 @@ let GameManager = {
             character2 = player;
         }
 
-        character1.attack(character2);
+        return [character1, character2];
+    },
 
-        if (character2.health >= 0) {
-            character2.attack(character1);
+    go: function() {
+        enemy.setAction(randomNumberBetween(0, Object.keys(Actions).length - 1));
+
+        characters = this.calculateActOrder();
+        character1 = characters[0];
+        character2 = characters[1];
+
+        alert(character1.type + " " + Object.keys(Actions)[character1.action]);
+        alert(character2.type + " " + Object.keys(Actions)[character2.action]);
+
+        // All combinations here 
+        switch(character1.action) {
+            case Actions['MELEE_ATTACK']:
+            case Actions['SPELL_ATTACK']:
+                switch(character2.action) {
+                    case Actions['MELEE_ATTACK']: 
+                    case Actions['SPELL_ATTACK']:
+                        character1.attack(character2);
+                        if (character2.health >= 0) {
+                            character2.attack(character1);
+                        }
+                        break;
+                    case Actions['BLOCK']:
+                        character1.attack(character2);
+                        break;
+                }
+                break;
+            case Actions['BLOCK']:
+                switch(character2.action) {
+                    case Actions['MELEE_ATTACK']:
+                    case Actions['SPELL_ATTACK']:
+                        character1.block(character2);
+                        break;
+                    case Actions['BLOCK']:
+                        // Neither character is harmed
+                        break;
+                }
+                break;
         }
-    },
-
-    commenceMagicAttack: function() {
-        
-    },
-
-    commenceStun: function() {
-        
-    },
-
-    commenceBlock: function() {
-
     },
 
     retreat: function() {

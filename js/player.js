@@ -11,10 +11,10 @@ class Player extends Character {
 
     // Attempt an attack. The opponent may land the first strike...
     attack(opponent) {
-        let playerAttackValues = super.attack(opponent);
+        let playerAttackDamage = super.attack(opponent);
 
-        alert("You hit with " + playerAttackValues.damagePerHit + " damage, " 
-        + playerAttackValues.numberOfHits + " times.");
+        // TODO: change text depending on if action is melee or spell attack
+        alert("You hit with " + playerAttackDamage + " damage.");
 
         let opponentHealthHTML = document.querySelector(".enemy-health");
 
@@ -30,7 +30,23 @@ class Player extends Character {
     }
     
     // Prepare for an attack. If correct, you will reflect their attack...
-    defend() {
+    // TODO: remove code duplication
+    block(opponent) {
+        let playerAttackDamage = super.block(opponent);
 
+        // TODO: change text depending on if action is melee or spell attack
+        alert("You blocked the enemy and reflected " + playerAttackDamage + " damage.");
+
+        let opponentHealthHTML = document.querySelector(".enemy-health");
+
+        // Checking if enemy is alive or not
+        if (opponent.health <= 0) {
+            alert("You win! Returning home.");
+            // TODO: try using an event here?
+            ViewManager.setPreFightView();
+            opponentHealthHTML.innerHTML = 'Health: 0';
+        } else {
+            opponentHealthHTML.innerHTML = 'Health: ' + opponent.health;
+        }
     }
 }

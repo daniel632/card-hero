@@ -52,32 +52,33 @@ let ViewManager = {
             "text": "Melee!",
             "href": "#",
             "class": "btn-fight",
-            "onclick": "GameManager.commenceAttack()"
+            "onclick": "player.setAction(Actions['MELEE_ATTACK'])"
         });
-        // this.createAndAttachChildNode(this.domActions, "a", {
-        //     "text": "Cast Spell!",
-        //     "href": "#",
-        //     "class": "btn-fight",
-        //     "onclick": "GameManager.commenceAttack()"
-        // });
-        // this.createAndAttachChildNode(this.domActions, "a", {
-        //     "text": "Stun!",
-        //     "href": "#",
-        //     "class": "btn-fight",
-        //     "onclick": "GameManager.commenceAttack()"
-        // });
+        this.createAndAttachChildNode(this.domActions, "a", {
+            "text": "Cast Spell!",
+            "href": "#",
+            "class": "btn-spell",
+            "onclick": "player.setAction(Actions['SPELL_ATTACK'])"
+        });
         this.createAndAttachChildNode(this.domActions, "a", {
             "text": "Block!",
             "href": "#",
             "class": "btn-block",
-            "onclick": "GameManager.commenceBlock()"
+            "onclick": "player.setAction(Actions['BLOCK'])"
         });
+        
+        // this.createAndAttachChildNode(this.domActions, "a", {
+        //     "text": "White Flag!",
+        //     "href": "#",
+        //     "class": "btn-retreat",
+        //     "onclick": "GameManager.retreat()"
+        // });
 
         this.createAndAttachChildNode(this.domActions, "a", {
-            "text": "White Flag!",
+            "text": "Go!",
             "href": "#",
-            "class": "btn-retreat",
-            "onclick": "GameManager.retreat()"
+            "class": "btn-go",
+            "onclick": "GameManager.go()"
         });
 
         // Making the arena div visible
@@ -175,7 +176,23 @@ let ViewManager = {
 
         this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
             "class": "text",
-            "text": "Health: Allows you to absorb damage from your opponent. Speed: Increases your chances of attacking first."
+            "text": "Health: Allows you to absorb damage from your opponent."
+        });
+        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+            "class": "text",
+            "text": "Spells: Increases your Spell attack damage."
+        });
+        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+            "class": "text",
+            "text": "Strength: Increases your Melee attack damage."
+        });
+        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+            "class": "text",
+            "text": "Agility: Increases damage reflected from a Block. Also increases damage from attacks."
+        });
+        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+            "class": "text",
+            "text": "Speed: Increases your chances of acting / reacting before your opponent."
         });
     },
     
