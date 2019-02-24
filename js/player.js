@@ -6,6 +6,7 @@ class Player extends Character {
     constructor(classType, health, spells, strength, agility, speed) {
         super(classType, health, spells, strength, agility, speed);
         this.type = 'player';
+        this.xp = 0;    // TODO:
     }
 
     // Attempt an attack. The opponent may land the first strike...
@@ -21,6 +22,7 @@ class Player extends Character {
         if (opponent.health <= 0) {
             alert("You win! Returning home.");
             // TODO: try using an event here?
+            ViewManager.setPreFightView();
             opponentHealthHTML.innerHTML = 'Health: 0';
         } else {
             opponentHealthHTML.innerHTML = 'Health: ' + opponent.health;

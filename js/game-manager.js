@@ -50,6 +50,10 @@ let GameManager = {
         }
     },
 
+    go: function() {
+
+    },
+
     commenceAttack: function() {
         // Determining attack order
         let playerChance = (player.speed + randomNumberBetween(0, 100)) * 0.5;
@@ -72,6 +76,14 @@ let GameManager = {
         }
     },
 
+    commenceMagicAttack: function() {
+        
+    },
+
+    commenceStun: function() {
+        
+    },
+
     commenceBlock: function() {
 
     },
@@ -79,5 +91,4 @@ let GameManager = {
     retreat: function() {
         ViewManager.setPreFightView();
     }
-
 };

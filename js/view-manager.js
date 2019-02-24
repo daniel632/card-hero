@@ -49,17 +49,30 @@ let ViewManager = {
         
         // Button
         this.createAndAttachChildNode(this.domActions, "a", {
-            "text": "Melee Attack!",
+            "text": "Melee!",
             "href": "#",
             "class": "btn-fight",
             "onclick": "GameManager.commenceAttack()"
         });
+        // this.createAndAttachChildNode(this.domActions, "a", {
+        //     "text": "Cast Spell!",
+        //     "href": "#",
+        //     "class": "btn-fight",
+        //     "onclick": "GameManager.commenceAttack()"
+        // });
+        // this.createAndAttachChildNode(this.domActions, "a", {
+        //     "text": "Stun!",
+        //     "href": "#",
+        //     "class": "btn-fight",
+        //     "onclick": "GameManager.commenceAttack()"
+        // });
         this.createAndAttachChildNode(this.domActions, "a", {
             "text": "Block!",
             "href": "#",
             "class": "btn-block",
             "onclick": "GameManager.commenceBlock()"
         });
+
         this.createAndAttachChildNode(this.domActions, "a", {
             "text": "White Flag!",
             "href": "#",
