@@ -197,7 +197,23 @@ let ViewManager = {
     },
     
     hideInfo: function() {
-        this.domInfo.querySelector("div").querySelector("p").remove();
+
+        // this.domInfo.querySelector("div").querySelector("p").remove();
+        
+        const textItems = this.domInfo.querySelector("div").querySelectorAll(".text");
+        const numItems = textItems.length;
+        for (let i = 0; i < numItems; i++) {
+            textItems[i].remove();
+        }
+
+
+        // for (let p in ps) {
+        //     // if (!div.querySelector("p")) {
+        //     //     print("NEG");
+        //     // }
+        //     console.log(p.innerHTML);
+        //     p.innerHTML = "";
+        // }
 
         this.domInfo.querySelector("div").querySelector("button").innerHTML = "More Info!";
         this.domInfo.querySelector("div").querySelector("button").setAttribute("onclick", "ViewManager.loadInfo()");
