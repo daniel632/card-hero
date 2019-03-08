@@ -1,0 +1,51 @@
+/*** GENERAL ***/
+
+img {
+    width: 160px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    background-color: #777;
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center; /* centering items about the vertical axis */
+    justify-content: flex-start; /* vertical spacing between items */
+
+    width: 1000px;
+    margin: 0 auto; /* centering horizontally (i.e. auto), and 0 centering for the vertical */
+    background-color: #1b1b1b
+}
+
+.title {
+    font-family: 'Acme', sans-serif;
+    font-size: 30px;
+    color: #f8b700;
+}
+
+
+/*** CHARACTER ***/
+
+.character-name {
+    font-family: 'Acme', sans-serif;
+    font-size: 22px;
+    color: #f8b700;
+    padding: 12px 0 4px;
+}
+
+.character-text {
+    font-family: arial;
+    font-size: 12px;
+    color: #d5c8af;
+    line-height: 20px;
+}
