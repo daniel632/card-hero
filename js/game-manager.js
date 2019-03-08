@@ -12,6 +12,11 @@ let GameManager = {
         this.createRandomEnemy();
         ViewManager.setFightView();
     },
+
+    // Return to the home screen
+    quit: function() {
+        location.reload();
+    },
     
     // Create / Reset player
     createPlayer: function(classType) {

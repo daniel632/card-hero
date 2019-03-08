@@ -11,7 +11,6 @@ let ViewManager = {
     domArena: document.querySelector(".arena"),
     domEnemy: document.querySelector(".enemy"),
 
-
     setPlayerView: function() {
         this.createCharacterView(this.domPlayer, player);
     },
@@ -19,6 +18,14 @@ let ViewManager = {
     setPreFightView: function() {
 
         this.clearPage();
+
+        // Quit Button
+        this.createAndAttachChildNode(this.domHeader, "a", {
+            "text": "Quit",
+            "href": "#",
+            "class": "btn-quit",
+            "onclick": "GameManager.quit()"
+        })
 
         // Player
         this.createCharacterView(this.domPlayer, player);
