@@ -2,30 +2,29 @@
 // (Instance, because we only need on variant)
 let ViewManager = {
 
-    // TODO: init once? using a constructor (to avoid rerunning doc functions)
-    domHeader: document.querySelector(".header"),
-    domInfo: document.querySelector(".info"),
-    domInterface: document.querySelector(".interface"),
-    domPlayer: document.querySelector(".player"),
-    domActions: document.querySelector(".actions"),
-    domArena: document.querySelector(".arena"),
-    domEnemy: document.querySelector(".enemy"),
-
-    setPlayerView: function() {
-        this.createCharacterView(this.domPlayer, player);
+    init: function() {
+        this.domWrapper = document.querySelector(".wrapper");
+        this.domHeader = this.domWrapper.querySelector(".header");
+        this.domPlayer = this.domWrapper.querySelector(".player");
+        this.domInterface = this.domWrapper.querySelector(".interface");
+        // domActions: domInterface.querySelector(".actions"),
+        // domInfo: domInterface.querySelector(".info"),
+        this.domEnemy = this.domWrapper.querySelector(".enemy");
     },
 
     setPreFightView: function() {
 
-        this.clearPage();
+        // this.clearPage();
 
-        // Quit Button
-        this.createAndAttachChildNode(this.domHeader, "a", {
-            "text": "Quit",
-            "href": "#",
-            "class": "btn-quit",
-            "onclick": "GameManager.quit()"
-        })
+        // // Quit Button
+        // this.createAndAttachChildNode(this.domHeader, "a", {
+        //     "text": "Quit",
+        //     "href": "#",
+        //     "class": "btn-quit",
+        //     "onclick": "GameManager.quit()"
+        // })
+
+        init();
 
         // Player
         this.createCharacterView(this.domPlayer, player);
@@ -36,7 +35,7 @@ let ViewManager = {
         });
 
         // Create Anchor node (which has a button attribute), to find an enemy
-        this.createAndAttachChildNode(this.domActions, "a", {
+        this.createAndAttachChildNode(this.domInterface, "a", {
             "text": "Search for an enemy!",
             "href": "#",
             "class": "btn-prefight",
@@ -47,7 +46,7 @@ let ViewManager = {
     setFightView: function() {
 
         this.removeAllChildrenElements(this.domHeader);
-        this.removeAllChildrenElements(this.domActions);
+        this.removeAllChildrenElements(this.domInterface);
 
         // Prompt
         this.createAndAttachChildNode(this.domHeader, "p", {
@@ -55,19 +54,19 @@ let ViewManager = {
         });
         
         // Button
-        this.createAndAttachChildNode(this.domActions, "a", {
+        this.createAndAttachChildNode(this.domInterface, "a", {
             "text": "Melee!",
             "href": "#",
             "class": "btn-fight",
             "onclick": "player.setAction(Actions['MELEE_ATTACK'])"
         });
-        this.createAndAttachChildNode(this.domActions, "a", {
+        this.createAndAttachChildNode(this.domInterface, "a", {
             "text": "Cast Spell!",
             "href": "#",
             "class": "btn-spell",
             "onclick": "player.setAction(Actions['SPELL_ATTACK'])"
         });
-        this.createAndAttachChildNode(this.domActions, "a", {
+        this.createAndAttachChildNode(this.domInterface, "a", {
             "text": "Block!",
             "href": "#",
             "class": "btn-block",
@@ -81,15 +80,12 @@ let ViewManager = {
         //     "onclick": "GameManager.retreat()"
         // });
 
-        this.createAndAttachChildNode(this.domActions, "a", {
+        this.createAndAttachChildNode(this.domInterface, "a", {
             "text": "Go!",
             "href": "#",
             "class": "btn-go",
             "onclick": "GameManager.go()"
         });
-
-        // Making the arena div visible
-        this.domArena.style.visibility = 'visible';
         
         // Creating the enemy view
         ViewManager.createCharacterView(this.domEnemy, enemy);
@@ -165,54 +161,55 @@ let ViewManager = {
     // TODO: make an object for all divs - would allow us to enumerate through all with a loop
     clearPage: function() {
         this.removeAllChildrenElements(this.domHeader);
-        this.removeAllChildrenElements(this.domInfo);
-        this.removeAllChildrenElements(this.domInterface);
         this.removeAllChildrenElements(this.domPlayer);
-        this.removeAllChildrenElements(this.domActions);
-        this.removeAllChildrenElements(this.domArena);
-        this.domArena.style.visibility = "hidden";
+        this.removeAllChildrenElements(this.domInterface);
         this.removeAllChildrenElements(this.domEnemy);
     },
 
     // TODO: listeners on player and enemey healthHTML - 
 
+    // For the home screen
     // Opens the help panel
     loadInfo: function() {
-        this.domInfo.querySelector("div").querySelector("button").innerHTML = "Hide Info";
-        this.domInfo.querySelector("div").querySelector("button").setAttribute("onclick", "ViewManager.hideInfo()");
+        domInfo = wrapper.querySelector(".info");
 
-        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+        domInfo.querySelector("div").querySelector("button").innerHTML = "Hide Info";
+        domInfo.querySelector("div").querySelector("button").setAttribute("onclick", "ViewManager.hideInfo()");
+
+        this.createAndAttachChildNode(domInfo.querySelector("div"), "p", {
             "class": "text",
             "text": "Health: Allows you to absorb damage from your opponent."
         });
-        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+        this.createAndAttachChildNode(domInfo.querySelector("div"), "p", {
             "class": "text",
             "text": "Spells: Increases your Spell attack damage."
         });
-        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+        this.createAndAttachChildNode(domInfo.querySelector("div"), "p", {
             "class": "text",
             "text": "Strength: Increases your Melee attack damage."
         });
-        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+        this.createAndAttachChildNode(domInfo.querySelector("div"), "p", {
             "class": "text",
             "text": "Agility: Increases damage reflected from a Block. Also increases damage from attacks."
         });
-        this.createAndAttachChildNode(this.domInfo.querySelector("div"), "p", {
+        this.createAndAttachChildNode(domInfo.querySelector("div"), "p", {
             "class": "text",
             "text": "Speed: Increases your chances of acting / reacting before your opponent."
         });
     },
     
+    // For the home screen:
     hideInfo: function() {
+        domInfo = wrapper.querySelector(".info");
         
-        const textItems = this.domInfo.querySelector("div").querySelectorAll(".text");
+        const textItems = domInfo.querySelector("div").querySelectorAll(".text");
         const numItems = textItems.length;
         for (let i = 0; i < numItems; i++) {
             textItems[i].remove();
         }
 
-        this.domInfo.querySelector("div").querySelector("button").innerHTML = "More Info!";
-        this.domInfo.querySelector("div").querySelector("button").setAttribute("onclick", "ViewManager.loadInfo()");
+        domInfo.querySelector("div").querySelector("button").innerHTML = "More Info!";
+        domInfo.querySelector("div").querySelector("button").setAttribute("onclick", "ViewManager.loadInfo()");
     }
 
 };
